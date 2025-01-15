@@ -42,7 +42,10 @@ session = Session()
 
 class DatumRequest(BaseModel):
     content: str
-
+@app.get("/")
+async def get_read_root():
+    raise HTTPException(status_code=200, detail="Welcome to the Datum API. Please refer to the documentation for more information.")
+    
 @app.post("/data/{device_id}")
 async def create_datum(device_id: str, datum_request: DatumRequest):
     if len(datum_request.content) > 140:
@@ -112,7 +115,7 @@ async def get_registered_devices():
 @app.get("/data/{device_id}/since/{t1}")
 async def get_since_t(device_id: str, t1):
     try:
-        t1 = datetime.datetime.strptime(t1, "%Y-%m-%dT%H:%M:%S")
+        t1 = datetime.datetime.strptime(t1, "%Y-%m-%dT%H:%M:%S%z")
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid timestamp")
 
@@ -126,8 +129,8 @@ async def get_since_t(device_id: str, t1):
 @app.get("/data/{device_id}/between/{t1}/{t2}")
 async def get_between_t(device_id: str, t1, t2):
     try:
-        t1 = datetime.datetime.strptime(t1, "%Y-%m-%dT%H:%M:%S")
-        t2 = datetime.datetime.strptime(t2, "%Y-%m-%dT%H:%M:%S")
+        t1 = datetime.datetime.strptime(t1, "%Y-%m-%dT%H:%M:%S%z")
+        t2 = datetime.datetime.strptime(t2, "%Y-%m-%dT%H:%M:%S%z")
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid timestamp")
 

@@ -1,8 +1,6 @@
-Here is the re-generated `README.md` file:
+# **datumpy**
 
-# **Datum API**
-
-Welcome to Datum API, a simple RESTful API for storing and retrieving data from various devices.
+Welcome to datumpy, a simple RESTful API for storing and retrieving data from various devices.
 
 ### Setup
 
@@ -10,32 +8,32 @@ Welcome to Datum API, a simple RESTful API for storing and retrieving data from 
 
 To run the application, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/datum-api.git`
-2. Create a virtual environment: `python -m venv venv` (optional but recommended)
-3. Activate the virtual environment: `source venv/bin/activate` (on Linux/Mac) or `venv\Scripts\activate` (on Windows)
+1. Clone the repository: `git clone https://github.com/tevfik/datumpy.git`
+2. Create a virtual environment: `python -m venv ~/venv/datumpy` (optional but recommended)
+3. Activate the virtual environment: `source ~/venv/datumpy/bin/activate` (on Linux/Mac) or `venv\datumpy\Scripts\activate` (on Windows)
 
 ### Building and Running with Docker
 
 ---
 
-The easiest way to run Datum API is by using Docker. Here's how you can build and run the application:
+The easiest way to run datumpy is by using Docker. Here's how you can build and run the application:
 
 **Step 1: Build the Docker image**
 
 Run the following command in your terminal:
 
 ```
-docker build -t datum-api .
+docker build -t datumpy .
 ```
 
-This will create a new Docker image named `datum-api`.
+This will create a new Docker image named `datumpy`.
 
 **Step 2: Run the Docker container**
 
-Run the following command to start a new container from the `datum-api` image:
+Run the following command to start a new container from the `datumpy` image:
 
 ```bash
-docker run -p 8000:8000 datum-api
+docker run -it --rm -p 8000:8000 datum-api
 ```
 
 This will start a new container and map port 8000 on your local machine to port 8000 in the container.
